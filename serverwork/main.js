@@ -34,10 +34,10 @@ $(function() {
 		}
 	}
 
-	var request = new XMLHttpRequest();
+	
 
-	$("button[type='submit']").on('click', function() {
-		
+	$("form").on('submit', function() {
+		var request = new XMLHttpRequest();
 
 		let first_name = $("input[name='first_name']").val();
 		let last_name = $("input[name='last_name']").val();
@@ -53,7 +53,6 @@ $(function() {
 
 		request.onreadystatechange = function() {
 			if(request.readyState == 4 && request.status == 200) {
-				alert(request.responseText);
 				alert('ok post');
 			}
 
