@@ -34,18 +34,33 @@ $(function() {
 		}
 	}
 
+	var request = new XMLHttpRequest();
+
 	$("button[type='submit']").on('click', function() {
+		
+
 		let first_name = $("input[name='first_name']").val();
 		let last_name = $("input[name='last_name']").val();
 		let avatar = $("input[name='avatar']").val();
 
-	var request = new XMLHttpRequest();
-	var param = 'first_name=' + encodeURIComponent(first_name) +
-				'last_name' + encodeURIComponent(last_name) + 
-				'avatar' + encodeURIComponent(avatar);
-	request.open('POST', "https://reqres.in/api/users");
-	request.send(param);
-	console.log(request.responseText);
+		var param = 'first_name=' + encodeURIComponent(first_name) +
+		'&last_name=' + encodeURIComponent(last_name) + 
+		'&avatar=' + encodeURIComponent(avatar);
+
+		request.open('POST', "https://reqres.in/api/users", true);
+		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		request.send(param);
+
+		request.onreadystatechange = function() {
+			if(request.readyState == 4 && request.status == 200) {
+				alert(request.responseText);
+				alert('ok post');
+			}
+
+			else alert(request.status);
+		}
+
+		
 	});
 
 
