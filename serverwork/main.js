@@ -36,7 +36,8 @@ $(function() {
 
 	
 
-	$("form").on('submit', function() {
+	$("button").on('click', function(event) {
+    event.preventDefault();
 		var request = new XMLHttpRequest();
 
 		let first_name = $("input[name='first_name']").val();
@@ -51,12 +52,10 @@ $(function() {
 		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		request.send(param);
 
-		request.onreadystatechange = function() {
-			if(request.readyState == 4 && request.status == 200) {
+		request.onload = function() {
+			if(request.readyState == 4) {
 				alert('ok post');
 			}
-
-			else alert(request.status);
 		}
 
 		
