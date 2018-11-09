@@ -1,0 +1,42 @@
+.container{
+	display: flex;
+}
+
+form * {
+	display: block;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.box {
+	min-width: 50%;
+	padding-right: 20px;
+}
+
+.card {
+	display: flex;
+	background-color: #ccc;
+	box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+	margin-bottom: 30px;
+	padding: 15px;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+}
+
+.pagination li {
+	padding: 5px 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: #ccc;
+	cursor: pointer;
+}
+
+.pagination li:hover {
+	background-color: #c0c011;
+}
