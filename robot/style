@@ -1,0 +1,11 @@
+.navigation {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	max-width: 200px;
+	width: 100%;
+}
+
+.navigation-item:first-child, .navigation-item:last-child {
+	width: 100%;
+}

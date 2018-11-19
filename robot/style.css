@@ -1,0 +1,45 @@
+#box {
+	overflow: hidden;
+	border: 1px solid #fcc000;
+	margin: 10px;
+}
+
+.navigation,
+.active-robot {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0 auto;
+	max-width: 200px;
+	width: 100%;
+}
+
+.navigation-item,
+.robot-btn,
+.add-robot {
+	background-color: #fce060;
+	border: 1px solid #fcc000;
+	margin: 5px;
+	padding: 5px;
+	cursor: pointer;
+	width: calc(50% - 10px);
+}
+
+.robot-btn {
+	background-color: #fcebbb;
+	border: 1px solid #bbb000;
+}
+
+.navigation-item:hover, .robot-btn:hover {
+	background-color: transparent;
+}
+
+.navigation-item:first-child, .navigation-item:last-child {
+	width: 100%;
+}
+
+.add-robot {
+	background-color: #4cece5;
+	border: 1px solid #6bbb;
+}
