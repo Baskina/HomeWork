@@ -1,7 +1,7 @@
 #box {
 	overflow: hidden;
 	border: 1px solid #fcc000;
-	margin: 10px;
+	margin: 5px;
 }
 
 .navigation,
@@ -9,8 +9,6 @@
 	box-sizing: border-box;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
-	margin: 0 auto;
 	max-width: 200px;
 	width: 100%;
 }
@@ -24,6 +22,10 @@
 	padding: 5px;
 	cursor: pointer;
 	width: calc(50% - 10px);
+}
+
+.add-robot {
+  max-width: 190px;
 }
 
 .robot-btn {
