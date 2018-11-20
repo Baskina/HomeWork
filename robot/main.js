@@ -3,11 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	let countRobots = 0;
 	let robots = {};
 	let active;
-	let stepTop;
-	let stepRight;
-	let stepBottom;
-	let stepLeft;
-
 
 	function Robot(width, height, margin, background, step, name) {
 		this.step = step;
@@ -40,22 +35,22 @@ document.addEventListener("DOMContentLoaded", function() {
 		document.getElementById('active-robot').append(btnActiveRobot);
 	}
 
-	Robot.prototype.horisontal = function(domElem) {
+	Robot.prototype.horisontal = function() {
 		let count = 0;
 
 		return function(arrow) {
 			
 			switch (arrow) {
-				case 'right': count += this.step;;
+				case 'right': count += this.step;
 				break;
-				case 'left': count -= this.step;;
+				case 'left': count -= this.step;
 				break;
 			}
 			this.elem.style.left = count + 'px';
-		}.bind(domElem);
+		}
 	}
 
-	Robot.prototype.vertical = function(domElem) {
+	Robot.prototype.vertical = function() {
 		let count = 0;
 
 		return function(arrow) {
@@ -67,12 +62,12 @@ document.addEventListener("DOMContentLoaded", function() {
 				break;
 			}
 			this.elem.style.top = count + 'px';
-		}.bind(domElem);
+		}
 	}
 
 	function setStepCount(activeRobot) {
-		stepHorisontal = activeRobot.horisontal(activeRobot);
-		stepVertical = activeRobot.vertical(activeRobot);
+		stepHorisontal = activeRobot.horisontal().bind(activeRobot);
+		stepVertical = activeRobot.vertical().bind(activeRobot);
 	}
 	
 	countRobots++;
@@ -82,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	document.getElementById('add-robot').addEventListener('click', function() {
 		countRobots++;
-		robots[`robot${countRobots}`] = new Robot(50, 50, 10, '#cccccc', 5, `robot${countRobots}`);
+		robots[`robot${countRobots}`] = new Robot(50, 50, 10, '#ccc', 5, `robot${countRobots}`);
 	});
 
 
