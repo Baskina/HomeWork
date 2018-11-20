@@ -1,0 +1,51 @@
+.container {
+	max-width: 500px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+ul {
+	list-style: none;
+	display: flex;
+	padding-left: 0;
+	margin-bottom: 0;
+}
+
+ul li {
+}
+
+ul li:last-child {
+	border-right: 1px solid green;
+}
+
+ul a {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+	border: 1px solid green;
+	border-right: none;
+	border-bottom: none;
+	padding: 10px;
+}
+
+.tab {
+	border: 1px solid green;
+}
+
+.tab:nth-child(2) {
+	background-color: #a79eb7;
+}
+
+.tab:nth-child(3) {
+	background-color: #e0a7a7;
+}
+
+.tab:nth-child(4) {
+	background-color: #250f29;
+	color: #fff;
+}
+
+.active {
+	background-color: #a8bfa5;
+}
+
