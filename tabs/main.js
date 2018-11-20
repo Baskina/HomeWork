@@ -18,23 +18,16 @@ $(function() {
 	}
 
 	buttons.on("click", function(event){
-		let target = event.target;
-		if(!($(target).hasClass("active"))){
+		let target = $(event.target);
+		if(!(target.hasClass("active"))){
 			$(buttons).removeClass("active");
-			$(target).addClass("active");
+			target.addClass("active");
 
 			currentelem.fadeOut(300, function() {
-				($($(target).attr('href'))).fadeIn(300);
+				($(target.attr('href'))).fadeIn(300);
 			});
 
 			currentelem = $($(".active").attr('href'));
 		}
 	});
 });
-
-
-
-
-
-
-
