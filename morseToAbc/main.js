@@ -1,31 +1,49 @@
 var abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var morsecode =[
+var morsecode = [
 '.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....',
 '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.',
 '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-',
 '-.--', '--..'
-]
+];
 
 abc = abc.split('');
 
-function reverse (string) {
-	if(abc.indexOf(string.charAt(0)) == -1) {
-		string = string.split(" ");
-		string = getSign(string, abc, morsecode);
-	}
+var result = '';
 
+function change(str) {
+	result = '';
+	if(str.match((/\w/g) || []).length < str.length / 2) {
+		console.log(str);
+		str = str.replace(/\w/g,'*');
+		if(str.indexOf('*') != -1) {
+			alert('в стоку добавлены недопустимые символы A-Z');
+			
+		}
+		console.log(str);
+		str = str.split(' ');
+		getRes(str, abc, morsecode);
+	}
 	else {
-		string = string.split("");
-		string = getSign(string, morsecode, abc);
+		console.log(str);
+		str = str.replace(/[-.]/g,'*');
+		if(str.indexOf('*') != -1) {
+			alert('в стоку добавлены недопустимые символы ., -');
+		}
+		console.log(str);
+		str = str.split('');
+		getRes(str, morsecode, abc);
 	}
 
-	return string;
+	return result;
 }
 
-function getSign (string, firstarr, secondarr) {
-	return string.map(function(elem) {
-		return elem = firstarr[secondarr.indexOf(elem)];
-	}).join(' ');
+function getRes(str, firstArr, secondArr) {
+	str.map(function(elem) {
+		if(elem != '*') return result += firstArr[secondArr.indexOf(elem)];
+	});
 }
 
-console.log(reverse(".- ... ..-"));
+
+console.log(change('.- -... H .- D --..'));
+
+console.log(change('ABL-LC.-'));

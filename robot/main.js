@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function() {
 		this.elem.style.background = background;
 		this.elem.style.position = 'relative';
 		this.elem.innerHTML = name;
+		this.elem.style.left = 0;
+		this.elem.style.top = 0;
+
+		console.log(parseInt(this.elem.style.left));
 
 		if (countRobots == 1) {
 			active = this;
@@ -35,39 +39,27 @@ document.addEventListener("DOMContentLoaded", function() {
 		document.getElementById('active-robot').append(btnActiveRobot);
 	}
 
-	Robot.prototype.horisontal = function() {
-		let count = 0;
-
-		return function(arrow) {
-			
+	Robot.prototype.horisontal = function(arrow) {
 			switch (arrow) {
-				case 'right': count += this.step;
+				case 'right': this.elem.style.left = parseInt(this.elem.style.left) + this.step + 'px';
 				break;
-				case 'left': count -= this.step;
+				case 'left': this.elem.style.left = parseInt(this.elem.style.left) - this.step + 'px';
 				break;
 			}
-			this.elem.style.left = count + 'px';
-		}
 	}
 
-	Robot.prototype.vertical = function() {
-		let count = 0;
-
-		return function(arrow) {
-			
+	Robot.prototype.vertical = function(arrow) {
 			switch (arrow) {
-				case 'bottom': count += this.step;
+				case 'bottom': this.elem.style.top = parseInt(this.elem.style.top) + this.step + 'px';
 				break;
-				case 'top': count -= this.step;
+				case 'top': this.elem.style.top = parseInt(this.elem.style.top) - this.step + 'px';
 				break;
 			}
-			this.elem.style.top = count + 'px';
-		}
 	}
 
 	function setStepCount(activeRobot) {
-		stepHorisontal = activeRobot.horisontal().bind(activeRobot);
-		stepVertical = activeRobot.vertical().bind(activeRobot);
+		stepHorisontal = activeRobot.horisontal.bind(activeRobot);
+		stepVertical = activeRobot.vertical.bind(activeRobot);
 	}
 	
 	countRobots++;
