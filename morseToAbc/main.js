@@ -3,8 +3,7 @@ var morsecode = [
 '.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....',
 '..', '.---', '-.-', '.-..', '--', '-.', '---', '.--.',
 '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-',
-'-.--', '--..'
-];
+'-.--', '--..'];
 
 abc = abc.split('');
 
@@ -12,24 +11,24 @@ var result = '';
 
 function change(str) {
 	result = '';
-	if(str.match((/\w/g) || []).length < str.length / 2) {
-		console.log(str);
+	if((((str.match(/\s/g)) || []).length >= 1) || str.match(/\w/g).length == 0) {
+		console.log(`morse: from ${str}`);
 		str = str.replace(/\w/g,'*');
 		if(str.indexOf('*') != -1) {
-			alert('в стоку добавлены недопустимые символы A-Z');
-			
+			console.log('invalid characters (A-Z) added to line');
+			console.log(`morse: intermediate ${str}`);
 		}
-		console.log(str);
 		str = str.split(' ');
 		getRes(str, abc, morsecode);
+    result = result.replace(/\s/g, '')
 	}
 	else {
-		console.log(str);
+		console.log(`abc: from ${str}`);
 		str = str.replace(/[-.]/g,'*');
 		if(str.indexOf('*') != -1) {
-			alert('в стоку добавлены недопустимые символы ., -');
+			console.log('invalid characters (. and/or -) added to line');
+			console.log(`abc: intermediate ${str}`);
 		}
-		console.log(str);
 		str = str.split('');
 		getRes(str, morsecode, abc);
 	}
@@ -39,11 +38,12 @@ function change(str) {
 
 function getRes(str, firstArr, secondArr) {
 	str.map(function(elem) {
-		if(elem != '*') return result += firstArr[secondArr.indexOf(elem)];
+		if(elem != '*') return result += firstArr[secondArr.indexOf(elem)] + ' ';
 	});
 }
 
+console.log(`morse: to ${change('.- -... -.- --..')}`);
+console.log(`abc: to ${change('JGABQ')}`);
 
-console.log(change('.- -... H .- D --..'));
-
-console.log(change('ABL-LC.-'));
+console.log(`morse: answer ${change('.- -... H .- D --..')}`);
+console.log(`abc: answer ${change('ABL-LC.----')}`);

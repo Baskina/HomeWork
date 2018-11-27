@@ -12,8 +12,10 @@ $(function() {
 		
 		request.onload = function () {
 			if (this.readyState === 4 && this.status === 200) {	
+				console.log(request.responseText);
 				mainBase = JSON.parse(request.responseText).data;
-				
+				console.log(JSON.parse(request.responseText));
+				console.log(JSON.parse(request.responseText).data);
 				mainBase.forEach( function(element, index) {
 					makeCard(element);
 				});
